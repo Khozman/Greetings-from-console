@@ -17,10 +17,7 @@ public class Greet {
 
             String[] ary = arg.split(" ");
 
-            String x = ary[0];
-            String y = ary[2]
-
-            if (("greet").equalsIgnoreCase(x)) {
+            if (("greet").equalsIgnoreCase(ary[0])) {
                 if (ary[2].equals("english")) {
                     System.out.println("Hello " + ary[1] + "!\n");
                 } else if (ary[2].equals("french")) {
@@ -28,14 +25,14 @@ public class Greet {
                 } else if (ary[2].equals("chinese")) {
                     System.out.println("你好 " + ary[1] + "!\n");
                 }
-            } else if (ary[0].equals("help")) {
+            } else if (("help").equalsIgnoreCase(ary[0])) {
                 System.out.println("Welcome to the Help page");
-            } else if (ary[0].equals("clear")) {
+            } else if (("clear").equalsIgnoreCase(ary[0])) {
                 System.out.println("cleared!!!!!");
-            } else if (ary[0].equals("exit")) {
+            } else if (("exit").equalsIgnoreCase(ary[0])) {
                 running = false;
                 System.out.println("Successfully logged out!!!!");
-            } else if (ary[0].equals("greeted")) {
+            } else if (("greeted").equalsIgnoreCase(ary[0])) {
                 System.out.println("__ People greeted");
             } else {
                 System.out.println("Error 404\n");
