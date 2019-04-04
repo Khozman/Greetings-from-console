@@ -18,11 +18,11 @@ public class Greet {
             String[] ary = arg.split(" ");
 
             if (("greet").equalsIgnoreCase(ary[0])) {
-                if (ary[2].equals("english")) {
+                if (("english").equalsIgnoreCase(ary[2])) {
                     System.out.println("Hello " + ary[1] + "!\n");
-                } else if (ary[2].equals("french")) {
+                } else if (("french").equalsIgnoreCase(ary[2])) {
                     System.out.println("Bonjour " + ary[1] + "!\n");
-                } else if (ary[2].equals("chinese")) {
+                } else if (("chinese").equalsIgnoreCase(ary[2])) {
                     System.out.println("你好 " + ary[1] + "!\n");
                 }
             } else if (("help").equalsIgnoreCase(ary[0])) {
