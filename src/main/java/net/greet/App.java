@@ -1,7 +1,6 @@
 package net.greet;
 
 import java.util.Scanner;
-import net.greet.Command;
 
 public class App {
     public static void main(String[] args) {

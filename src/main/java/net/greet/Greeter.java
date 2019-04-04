@@ -9,5 +9,5 @@ public class Greeter {
             } else if (("chinese").equalsIgnoreCase(language)) {
                 System.out.println("你好 " + name + "!\n");
             }
-        }
+    }
 }
