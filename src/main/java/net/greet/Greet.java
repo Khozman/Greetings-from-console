@@ -18,12 +18,14 @@ public class Greet {
             String[] ary = arg.split(" ");
 
             if (("greet").equalsIgnoreCase(ary[0])) {
-                if (("english").equalsIgnoreCase(ary[2])) {
+                if (ary.length == 2) {
                     System.out.println("Hello " + ary[1] + "!\n");
                 } else if (("french").equalsIgnoreCase(ary[2])) {
                     System.out.println("Bonjour " + ary[1] + "!\n");
                 } else if (("chinese").equalsIgnoreCase(ary[2])) {
                     System.out.println("你好 " + ary[1] + "!\n");
+                } else if (("english").equalsIgnoreCase(ary[2])) {
+                    System.out.println("Hello " + ary[1] + "!\n");
                 }
             } else if (("help").equalsIgnoreCase(ary[0])) {
                 System.out.println("Welcome to the Help page");
@@ -35,7 +37,8 @@ public class Greet {
             } else if (("greeted").equalsIgnoreCase(ary[0])) {
                 System.out.println("__ People greeted");
             } else {
-                System.out.println("Error 404\n");
+                System.out.println("Error!!!!!!!!\nYou've entered an INVALID command. " +
+                        "\nPlease try using the Help command for Assistance.\n");
             }
         }
 
