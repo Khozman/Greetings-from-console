@@ -10,22 +10,21 @@ public class App {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Greetings App!\n\n");
 
-        Command command = new Command();
+        Controller controller = new Controller();
+
         while (running) {
             System.out.println("Please Enter a command!\n\n");
 
-            String arg = sc.nextLine();
-            String[] ary = arg.split(" ");
+            controller.process(sc.nextLine());
 
-            if(ary.length <= 3){
 
-                if (("exit").equalsIgnoreCase(ary[0])) {
-                    running = false;
-                    System.out.println("Successfully logged out!!!!");
-                } else {
-                    command.string(ary);
-                }
+            if (("exit").equalsIgnoreCase(controller.command.getCmd())) {
+                running = false;
+                System.out.println("Successfully logged out!!!!");
+            } else {
+                controller.command.getCmd();
             }
         }
     }
 }
+
