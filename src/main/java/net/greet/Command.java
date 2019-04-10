@@ -8,7 +8,6 @@ public class Command {
     public  Command(String arg) {
 
         this.array = arg.split(" ");
-
     }
 
     public String getCmd(){
@@ -20,11 +19,7 @@ public class Command {
     }
 
     public String getName(){
-        if (array.length > 0) {
-            return array.length > 1 ? array[1] : "";
-        } else {
-            return "no name";
-        }
+        return array.length > 1 ? array[1].substring(0, 1).toUpperCase() + array[1].substring(1).toLowerCase() : null;
     }
 
     public String getLanguage(){

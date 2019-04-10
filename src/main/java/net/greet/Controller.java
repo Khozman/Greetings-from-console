@@ -11,29 +11,54 @@ public class Controller {
 
 
         if (("greet").equalsIgnoreCase(command.getCmd())) {
-            if (!command.getName().equalsIgnoreCase("No name")){
+            if (command.getName() == null) {
+                System.out.println("ERROR:\nYou've entered an INVALID command. " +
+                        "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n");
+            } else {
                 greeter.greetPerson(command.getName(), command.getLanguage());
                 greeted.setCounter(command.getName());
-            } else {
-                System.out.println("ERROR!!!!!!!!\nYou've entered an INVALID command. " +
-                    "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n");
             }
         } else if (("help").equalsIgnoreCase(command.getCmd())) {
             help.helpMenu();
         } else if (("clear").equalsIgnoreCase(command.getCmd())) {
-                greeted.clearCount(command.getName());
-                System.out.println(command.getName() + " cleared!!!");
-                System.out.println("====================================================================================");
+            if (greeted.totalPeopleGreeted() >= 1) {
+                try {
+                    if (!command.getName().equals(null)) {
+                        if (greeted.personGreetedMap.containsKey(command.getName())) {
+                            greeted.clearCount(command.getName());
+                            System.out.println(command.getName() + " cleared!");
+                        } else {
+                            System.out.println("Username doesn't exist.");
+                        }
+                    }
+                } catch (NullPointerException e) {
+                    greeted.personGreetedMap.clear();
+                    System.out.println("All User's have been cleared!");
+                }
+            } else {
+                System.out.println("Already empty.");
+            }
+            System.out.println("====================================================================================");
 
         } else if (("greeted").equalsIgnoreCase(command.getCmd())) {
-
-            System.out.println( command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
+            if (command.getName() != null) {
+                System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
+            } else {
+                if (greeted.totalPeopleGreeted() == 1){
+                    System.out.println(greeted.personGreetedMap);
+                } else if (greeted.totalPeopleGreeted() == 0){
+                    System.out.println("No one has been greeted.");
+                } else {
+                    System.out.println(greeted.totalPeopleGreeted() + " people have been greeted.");
+                    System.out.println(greeted.personGreetedMap);
+                }
+            }
             System.out.println("====================================================================================");
 
         } else if (("exit").equalsIgnoreCase(command.getCmd())) {
             return;
         } else {
-            System.out.println("Error!!!!!!!!\nYou've entered an INVALID command. " +
+            System.out.println("Error:\nYou've entered an INVALID command. " +
                     "\nPlease try using the Help command for Assistance.");
             System.out.println("====================================================================================");
 

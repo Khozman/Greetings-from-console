@@ -43,14 +43,13 @@ public class Greeted {
         for (Integer greetCount : personGreetedMap.values()) {
             totalPeopleGreeted += greetCount;
         }
-
         return totalPeopleGreeted;
     }
 
-    public int totalPeopleGreeted(String name) {
+    /*public int totalPeopleGreeted(String name) {
         if (!personGreetedMap.containsKey(name)) {
             return 0;
         }
         return personGreetedMap.get(name);
-    }
+    }*/
 }
