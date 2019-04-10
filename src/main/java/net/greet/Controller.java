@@ -20,6 +20,8 @@ public class Controller {
             }
         } else if (("help").equalsIgnoreCase(command.getCmd())) {
             help.helpMenu();
+        } else if (("counter").equalsIgnoreCase(command.getCmd())){
+            System.out.println(greeted.personGreetedMap.size() + " User's have been greeted.");
         } else if (("clear").equalsIgnoreCase(command.getCmd())) {
             if (greeted.totalPeopleGreeted() >= 1) {
                 try {
@@ -49,7 +51,6 @@ public class Controller {
                 } else if (greeted.totalPeopleGreeted() == 0){
                     System.out.println("No one has been greeted.");
                 } else {
-                    System.out.println(greeted.totalPeopleGreeted() + " people have been greeted.");
                     System.out.println(greeted.personGreetedMap);
                 }
             }
