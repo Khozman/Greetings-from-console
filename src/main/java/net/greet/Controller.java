@@ -12,8 +12,8 @@ public class Controller {
 
         if (("greet").equalsIgnoreCase(command.getCmd())) {
             if (command.getName() == null) {
-                System.out.println("ERROR:\nYou've entered an INVALID command. " +
-                        "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n");
+                System.out.println("\033[31mERROR:\nYou've entered an INVALID command. " +
+                        "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n\033[0m");
             } else {
                 greeter.greetPerson(command.getName(), command.getLanguage());
                 greeted.setCounter(command.getName());
@@ -30,7 +30,7 @@ public class Controller {
                             greeted.clearCount(command.getName());
                             System.out.println(command.getName() + " cleared!");
                         } else {
-                            System.out.println("Username doesn't exist.");
+                            System.out.println("Username " + command.getName() + " doesn't exist.");
                         }
                     }
                 } catch (NullPointerException e) {
@@ -44,7 +44,11 @@ public class Controller {
 
         } else if (("greeted").equalsIgnoreCase(command.getCmd())) {
             if (command.getName() != null) {
-                System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
+                if (greeted.personGreetedMap.containsKey(command.getName())) {
+                    System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
+                } else {
+                    System.out.println("Username " + command.getName() + " hasn't been greeted.");
+                }
             } else {
                 if (greeted.totalPeopleGreeted() == 1){
                     System.out.println(greeted.personGreetedMap);
@@ -59,10 +63,11 @@ public class Controller {
         } else if (("exit").equalsIgnoreCase(command.getCmd())) {
             return;
         } else {
-            System.out.println("Error:\nYou've entered an INVALID command. " +
-                    "\nPlease try using the Help command for Assistance.");
+            System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
+                    "\nPlease try using the Help command for Assistance.\033[0m");
             System.out.println("====================================================================================");
 
         }
     }
 }
+//Red

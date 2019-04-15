@@ -7,9 +7,7 @@ public class Greeted {
 
     Map<String, Integer> personGreetedMap = new HashMap<String, Integer>();
 
-
     public void setCounter(String name) {
-//        System.out.println("Set counter====================================" + name);
 
         if (!personGreetedMap.containsKey(name)) {
             personGreetedMap.put(name, 0);
@@ -28,6 +26,7 @@ public class Greeted {
         }
 
     }
+
     public int clearCount(String name){
         personGreetedMap.remove(name);
         try {
@@ -46,10 +45,4 @@ public class Greeted {
         return totalPeopleGreeted;
     }
 
-    /*public int totalPeopleGreeted(String name) {
-        if (!personGreetedMap.containsKey(name)) {
-            return 0;
-        }
-        return personGreetedMap.get(name);
-    }*/
 }
