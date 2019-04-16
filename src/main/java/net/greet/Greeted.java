@@ -3,7 +3,14 @@ package net.greet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Greeted {
+
+interface PersonGreeter {
+    int totalPeopleGreeted();
+}
+
+
+//Nothing to change below this line...
+public class Greeted implements PersonGreeter {
 
     Map<String, Integer> personGreetedMap = new HashMap<String, Integer>();
 
