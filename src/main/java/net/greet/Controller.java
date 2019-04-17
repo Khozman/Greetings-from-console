@@ -3,7 +3,8 @@ package net.greet;
 public class Controller {
     Greeter greeter = new Greeter();
     Help help = new Help();
-    Greeted greeted = new Greeted();
+//    Greeted greeted = new Greeted();
+    PersonGreeter greeted = new JdbcGreeted();
     Command command;
 
     public void process(String userInput) {
@@ -21,12 +22,12 @@ public class Controller {
         } else if (("help").equalsIgnoreCase(command.getCmd())) {
             help.helpMenu();
         } else if (("counter").equalsIgnoreCase(command.getCmd())){
-            System.out.println(greeted.personGreetedMap.size() + " User's have been greeted.");
+            System.out.println(greeted.getSize() + " User's have been greeted.");
         } else if (("clear").equalsIgnoreCase(command.getCmd())) {
             if (greeted.totalPeopleGreeted() >= 1) {
                 try {
                     if (!command.getName().equals(null)) {
-                        if (greeted.personGreetedMap.containsKey(command.getName())) {
+                        if (greeted.checkName(command.getName())) {
                             greeted.clearCount(command.getName());
                             System.out.println(command.getName() + " cleared!");
                         } else {
@@ -34,7 +35,7 @@ public class Controller {
                         }
                     }
                 } catch (NullPointerException e) {
-                    greeted.personGreetedMap.clear();
+                    greeted.clearUsers();
                     System.out.println("All User's have been cleared!");
                 }
             } else {
@@ -44,18 +45,18 @@ public class Controller {
 
         } else if (("greeted").equalsIgnoreCase(command.getCmd())) {
             if (command.getName() != null) {
-                if (greeted.personGreetedMap.containsKey(command.getName())) {
+                if (greeted.checkName(command.getName())) {
                     System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
                 } else {
                     System.out.println("Username " + command.getName() + " hasn't been greeted.");
                 }
             } else {
                 if (greeted.totalPeopleGreeted() == 1){
-                    System.out.println(greeted.personGreetedMap);
+                    System.out.println(greeted.viewData());
                 } else if (greeted.totalPeopleGreeted() == 0){
                     System.out.println("No one has been greeted.");
                 } else {
-                    System.out.println(greeted.personGreetedMap);
+                    System.out.println(greeted.viewData());
                 }
             }
             System.out.println("====================================================================================");
