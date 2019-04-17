@@ -1,1 +1,8 @@
-net/greet/Greet.class
+net/greet/Greeter.class
+net/greet/JdbcGreeted.class
+net/greet/App.class
+net/greet/Command.class
+net/greet/Help.class
+net/greet/PersonGreeter.class
+net/greet/Controller.class
+net/greet/Greeted.class
