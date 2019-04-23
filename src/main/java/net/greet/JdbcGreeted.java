@@ -73,7 +73,7 @@ public class JdbcGreeted implements PersonGreeter {
     }
 
     public int getSize(){
-        ////
+        //
         try {
             ResultSet rs = countPeoplePreparedStatement.executeQuery();
             if(rs.next()) {
@@ -81,7 +81,6 @@ public class JdbcGreeted implements PersonGreeter {
             }
         } catch (SQLException e) {
             return 0;
-          //  e.printStackTrace();
         }
         return 0;
     }
