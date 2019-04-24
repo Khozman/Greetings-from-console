@@ -29,7 +29,8 @@ public class Controller {
                     if (!command.getName().equals(null)) {
                         if (greeted.checkName(command.getName())) {
                             greeted.clearCount(command.getName());
-                            System.out.println(command.getName() + " cleared!");
+//                            System.out.println(greeted.clearCount(command.getName()));
+                            System.out.println(command.getName() + " has been cleared!");
                         } else {
                             System.out.println("Username " + command.getName() + " doesn't exist.");
                         }
@@ -46,17 +47,23 @@ public class Controller {
         } else if (("greeted").equalsIgnoreCase(command.getCmd())) {
             if (command.getName() != null) {
                 if (greeted.checkName(command.getName())) {
-                    System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " times.");
+                    if(greeted.getCounter(command.getName()) != 0) {
+                        System.out.println(command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " time(s).");
+                    } else{
+                        System.out.println("Username " + command.getName() + " hasn't been greeted.");
+                    }
                 } else {
                     System.out.println("Username " + command.getName() + " hasn't been greeted.");
                 }
             } else {
                 if (greeted.totalPeopleGreeted() == 1){
-                    System.out.println(greeted.viewData());
+                    greeted.viewData();
+//                    System.out.println(greeted.viewData());
                 } else if (greeted.totalPeopleGreeted() == 0){
                     System.out.println("No one has been greeted.");
                 } else {
-                    System.out.println(greeted.viewData());
+                    greeted.viewData();
+//                    System.out.println(greeted.viewData());
                 }
             }
             System.out.println("====================================================================================");
@@ -71,4 +78,3 @@ public class Controller {
         }
     }
 }
-//Red

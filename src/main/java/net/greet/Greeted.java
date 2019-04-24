@@ -8,7 +8,7 @@ public class Greeted implements PersonGreeter {
     Map<String, Integer> personGreetedMap = new HashMap<String, Integer>();
 
     public void setCounter(String name) {
-
+//This function sets the count of an individual to 0..
         if (!personGreetedMap.containsKey(name)) {
             personGreetedMap.put(name, 0);
 
@@ -19,6 +19,7 @@ public class Greeted implements PersonGreeter {
     }
 
     public int getCounter(String name){
+//        This function gets a count on how many time an individual has been greeted..
         try{
             return personGreetedMap.get(name);
         }catch (NullPointerException e){
@@ -27,6 +28,7 @@ public class Greeted implements PersonGreeter {
     }
 
     public int clearCount(String name){
+//        This function simply clears the user from the map..
         personGreetedMap.remove(name);
         try {
             return  personGreetedMap.get(name);
@@ -43,6 +45,7 @@ public class Greeted implements PersonGreeter {
         }
         return totalPeopleGreeted;
     }
+
     public int totalPeopleGreeted(String name){
 
             if (!personGreetedMap.containsKey(name)) {
@@ -51,21 +54,25 @@ public class Greeted implements PersonGreeter {
             return personGreetedMap.get(name);
     }
 
-
     public int getSize(){
+//        This function gets the size of the map..
         return personGreetedMap.size();
     }
 
     public boolean checkName(String name){
+//        This function checks for the name if it exists in the map..
         return personGreetedMap.containsKey(name);
     }
 
     public String clearUsers(){
+//        This function deletes all the users in the maps..
         personGreetedMap.clear();
         return "Map cleared";
     }
 
-    public HashMap viewData(){
-        return (HashMap) personGreetedMap;
+    public void viewData(){
+//        This prints out the map..
+        System.out.println(personGreetedMap);
+
     }
 }

@@ -1,7 +1,5 @@
 package net.greet;
 
-import java.util.HashMap;
-
 public interface PersonGreeter {
         void setCounter(String name);
         int totalPeopleGreeted(String name);
@@ -11,5 +9,5 @@ public interface PersonGreeter {
         int getCounter(String name);
         int clearCount(String name);
         int totalPeopleGreeted();
-        HashMap viewData();
+        void viewData();
 }
