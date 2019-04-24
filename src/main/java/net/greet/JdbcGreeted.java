@@ -175,7 +175,7 @@ public class JdbcGreeted implements PersonGreeter {
                     System.out.print("| " + rs.getString(i) + " "); //Print one element of a row
                 }
                 System.out.println("   |");
-                System.out.println("---------------");
+                System.out.println("----------------------");
             }
         } catch (SQLException ex){
             ex.printStackTrace();
