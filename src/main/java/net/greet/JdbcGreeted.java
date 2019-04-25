@@ -4,20 +4,18 @@ import java.sql.*;
 
 public class JdbcGreeted implements PersonGreeter {
 
-    final String INSERT_PERSON_SQL = "insert into PERSON_COUNT (USERNAME, GREET_COUNT) values(?, ?)";
-    final String FIND_PERSON_SQL = "select GREET_COUNT from PERSON_COUNT where USERNAME = ?";
-    final String UPDATE_PERSON_SQL = "update PERSON_COUNT set GREET_COUNT = ? where USERNAME = ?";
-    final String COUNT_PEOPLE_SQL = "select count(*) as counter from PERSON_COUNT";
-    final String SET_COUNT_TO_ZERO_SQL = "update PERSON_COUNT set GREET_COUNT = 0 where USERNAME = ?";
-    final String DELETE_ROW_SQL = "delete from PERSON_COUNT where USERNAME = ?";
-    final String DELETE_ALL_USERS_SQL = "delete from PERSON_COUNT";
-    final String VIEW_TABLE_SQL = "select USERNAME, GREET_COUNT from PERSON_COUNT";
+    final String INSERT_PERSON_SQL = "insert into GREETINGS_COUNTER (USERNAME, GREET_COUNT) values(?, ?)";
+    final String FIND_PERSON_SQL = "select GREET_COUNT from GREETINGS_COUNTER where USERNAME = ?";
+    final String UPDATE_PERSON_SQL = "update GREETINGS_COUNTER set GREET_COUNT = ? where USERNAME = ?";
+    final String COUNT_PEOPLE_SQL = "select count(*) as counter from GREETINGS_COUNTER";
+    final String DELETE_ROW_SQL = "delete from GREETINGS_COUNTER where USERNAME = ?";
+    final String DELETE_ALL_USERS_SQL = "delete from GREETINGS_COUNTER";
+    final String VIEW_TABLE_SQL = "select USERNAME, GREET_COUNT from GREETINGS_COUNTER";
 
     Connection conn;
-    PreparedStatement CreateNewPersonGreeted;
-    PreparedStatement FindPersonCount;
-    PreparedStatement UpdatePersonCount;
-    PreparedStatement setPersonCountToZero;
+    PreparedStatement createNewPersonGreeted;
+    PreparedStatement findPersonCount;
+    PreparedStatement updatePersonCount;
     PreparedStatement countPeoplePreparedStatement;
     PreparedStatement deleteUserRow;
     PreparedStatement deleteAllUsers;
@@ -27,11 +25,10 @@ public class JdbcGreeted implements PersonGreeter {
         try {
             conn = DriverManager.
                     getConnection("jdbc:h2:./target/greetings", "bekz", "");
-            CreateNewPersonGreeted = conn.prepareStatement(INSERT_PERSON_SQL);
-            FindPersonCount = conn.prepareStatement(FIND_PERSON_SQL);
-            UpdatePersonCount = conn.prepareStatement(UPDATE_PERSON_SQL);
+            createNewPersonGreeted = conn.prepareStatement(INSERT_PERSON_SQL);
+            findPersonCount = conn.prepareStatement(FIND_PERSON_SQL);
+            updatePersonCount = conn.prepareStatement(UPDATE_PERSON_SQL);
             countPeoplePreparedStatement = conn.prepareStatement(COUNT_PEOPLE_SQL);
-            setPersonCountToZero = conn.prepareStatement(SET_COUNT_TO_ZERO_SQL);
             deleteUserRow = conn.prepareStatement(DELETE_ROW_SQL);
             deleteAllUsers = conn.prepareStatement(DELETE_ALL_USERS_SQL);
             viewTable = conn.prepareStatement(VIEW_TABLE_SQL);
@@ -46,20 +43,20 @@ public class JdbcGreeted implements PersonGreeter {
 
         try {
             // find the counter for the current person
-            FindPersonCount.setString(1, name);
-            ResultSet rsPersonGreeted = FindPersonCount.executeQuery();
+            findPersonCount.setString(1, name);
+            ResultSet rsPersonGreeted = findPersonCount.executeQuery();
 
             if (!rsPersonGreeted.next()) {
                 // insertCreateNewPersonGreeted.setString(1, name);
-                CreateNewPersonGreeted.setString(1, name);
-                CreateNewPersonGreeted.setInt(2, 1);
-                CreateNewPersonGreeted.execute();
+                createNewPersonGreeted.setString(1, name);
+                createNewPersonGreeted.setInt(2, 1);
+                createNewPersonGreeted.execute();
 
             } else {
                 int greetCounter = rsPersonGreeted.getInt("GREET_COUNT") + 1;
-                UpdatePersonCount.setInt(1, greetCounter);
-                UpdatePersonCount.setString(2, name);
-                UpdatePersonCount.execute();
+                updatePersonCount.setInt(1, greetCounter);
+                updatePersonCount.setString(2, name);
+                updatePersonCount.execute();
             }
 
         } catch(SQLException ex) {
@@ -70,8 +67,8 @@ public class JdbcGreeted implements PersonGreeter {
     public int totalPeopleGreeted(String name) {
         // get the person count from the database - using a sql query...
         try {
-            FindPersonCount.setString(1, name);
-            ResultSet rs = FindPersonCount.executeQuery();
+            findPersonCount.setString(1, name);
+            ResultSet rs = findPersonCount.executeQuery();
             if (rs.next()) {
                 return rs.getInt("GREET_COUNT");
             }
@@ -98,8 +95,8 @@ public class JdbcGreeted implements PersonGreeter {
     public boolean checkName(String name){
         //        This function checks for the name if it exists in the map..
         try {
-            FindPersonCount.setString(1, name);
-            ResultSet rsPersonGreeted = FindPersonCount.executeQuery();
+            findPersonCount.setString(1, name);
+            ResultSet rsPersonGreeted = findPersonCount.executeQuery();
 
             if(rsPersonGreeted.next() ){
                 return true;
@@ -123,8 +120,8 @@ public class JdbcGreeted implements PersonGreeter {
     public int getCounter(String name){
         //        This function gets a count on how many time an individual has been greeted..
         try {
-            FindPersonCount.setString(1, name);
-            ResultSet rs = FindPersonCount.executeQuery();
+            findPersonCount.setString(1, name);
+            ResultSet rs = findPersonCount.executeQuery();
             if (rs.next()) {
                 return rs.getInt("GREET_COUNT");
             }
