@@ -20,9 +20,19 @@ public class Controller {
                 greeted.setCounter(command.getName());
             }
         } else if (("help").equalsIgnoreCase(command.getCmd())) {
-            help.helpMenu();
+            if (command.getName() != null){
+                System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
+                        "\nPlease try using the Help command for Assistance.\033[0m");
+            } else {
+                help.helpMenu();
+            }
         } else if (("counter").equalsIgnoreCase(command.getCmd())){
-            System.out.println(greeted.getSize() + " User's have been greeted.");
+            if (command.getName() != null) {
+                System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
+                        "\nPlease try using the Help command for Assistance.\033[0m");
+            } else {
+                System.out.println(greeted.getSize() + " User's have been greeted.");
+            }
         } else if (("clear").equalsIgnoreCase(command.getCmd())) {
             if (greeted.totalPeopleGreeted() >= 1) {
                 try {
@@ -69,7 +79,8 @@ public class Controller {
             System.out.println("====================================================================================");
 
         } else if (("exit").equalsIgnoreCase(command.getCmd())) {
-            return;
+                return;
+
         } else {
             System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
                     "\nPlease try using the Help command for Assistance.\033[0m");

@@ -11,6 +11,13 @@ public class JdbcGreetedTester {
     void getCountForUsers() throws SQLException {
         JdbcGreeted db = new JdbcGreeted();
 
-        assertEquals(1, db.getSize());
+        assertEquals(2, db.getSize());
+    }
+
+    @Test
+    void shouldCountTheNumberOfPeople() throws SQLException {
+        JdbcGreeted db = new JdbcGreeted();
+
+        assertEquals(2, db.totalPeopleGreeted());
     }
 }
