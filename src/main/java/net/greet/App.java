@@ -19,9 +19,7 @@ public class App {
         while (running) {
             System.out.println("\n____________________________Please Enter a command._________________________________\n");
 
-
             controller.process(sc.nextLine().trim());
-
 
             if (("exit").equalsIgnoreCase(controller.command.getCmd())) {
                 running = false;
