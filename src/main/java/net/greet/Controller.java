@@ -79,9 +79,11 @@ public class Controller {
             System.out.println("====================================================================================");
 
         } else if (("exit").equalsIgnoreCase(command.getCmd())) {
+//            This returns in order to prohibit treating an exit command as an invalid command.. It sends a signal to the Main App...
                 return;
 
         } else {
+//            This is the default message that one gets when they enter an invalid command..
             System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
                     "\nPlease try using the Help command for Assistance.\033[0m");
             System.out.println("====================================================================================");
