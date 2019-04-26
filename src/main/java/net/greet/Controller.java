@@ -11,7 +11,7 @@ public class Controller {
         this.command = new Command(userInput);
 
 
-        if (("greet").equalsIgnoreCase(command.getCmd())) {
+        if (("greet").equalsIgnoreCase(command.executeCmd())) {
 //            Takes the greet command along side the name and language in order to pass it in to the greeter class..
             if (command.getName() == null) {
                 System.out.println("\033[31mERROR:\nYou've entered an INVALID command. " +
@@ -20,7 +20,7 @@ public class Controller {
                 greeter.greetPerson(command.getName(), command.getLanguage());
                 greeted.setCounter(command.getName());
             }
-        } else if (("help").equalsIgnoreCase(command.getCmd())) {
+        } else if (("help").equalsIgnoreCase(command.executeCmd())) {
 //            Takes the help command and switches the user in the App to the help menu..
             if (command.getName() != null){
                 System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
@@ -28,7 +28,7 @@ public class Controller {
             } else {
                 help.helpMenu();
             }
-        } else if (("counter").equalsIgnoreCase(command.getCmd())){
+        } else if (("counter").equalsIgnoreCase(command.executeCmd())){
 //            It's function goes to the map or the DB, to check on how many people have been greeted in total..
             if (command.getName() != null) {
                 System.out.println("\033[31mError:\nYou've entered an INVALID command. " +
@@ -36,7 +36,7 @@ public class Controller {
             } else {
                 System.out.println(greeted.getSize() + " User's have been greeted.");
             }
-        } else if (("clear").equalsIgnoreCase(command.getCmd())) {
+        } else if (("clear").equalsIgnoreCase(command.executeCmd())) {
 //            It's function goes to the map or the DB too erase all the users who have been greeted..
             if (greeted.totalPeopleGreeted() >= 1) {
                 try {
@@ -58,7 +58,7 @@ public class Controller {
             }
             System.out.println("====================================================================================");
 
-        } else if (("greeted").equalsIgnoreCase(command.getCmd())) {
+        } else if (("greeted").equalsIgnoreCase(command.executeCmd())) {
 //            It's function goes to the DB or the map to check how many time was each user greeted..
             if (command.getName() != null) {
                 if (greeted.checkName(command.getName())) {
@@ -83,7 +83,7 @@ public class Controller {
             }
             System.out.println("====================================================================================");
 
-        } else if (("exit").equalsIgnoreCase(command.getCmd())) {
+        } else if (("exit").equalsIgnoreCase(command.executeCmd())) {
 //            This returns in order to prohibit treating an exit command as an invalid command.. It sends a signal to the Main App...
                 return;
 

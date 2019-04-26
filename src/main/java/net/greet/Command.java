@@ -10,7 +10,7 @@ public class Command {
         this.array = arg.split(" ");
     }
 
-    public String getCmd(){
+    public String executeCmd(){
 //        This take the first argument in the  array to set it as a command..
         if(array.length <= 3) {
             return array[0];

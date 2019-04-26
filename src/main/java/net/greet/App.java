@@ -21,12 +21,12 @@ public class App {
 
             controller.process(sc.nextLine().trim());
 
-            if (("exit").equalsIgnoreCase(controller.command.getCmd())) {
+            if (("exit").equalsIgnoreCase(controller.command.executeCmd())) {
                 running = false;
                 System.out.println("____________________________Successfully logged out.________________________________");
                 System.out.println("====================================================================================");
             } else {
-                controller.command.getCmd();
+                controller.command.executeCmd();
             }
         }
     }

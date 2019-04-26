@@ -2,8 +2,6 @@ package net.greet;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandTester {
@@ -11,7 +9,7 @@ public class CommandTester {
     public void shouldReturnCommand(){
         Command array = new Command("greet bheki chinese");
 
-        assertEquals(array.getCmd(), "greet");
+        assertEquals(array.executeCmd(), "greet");
     }
 
     @Test
