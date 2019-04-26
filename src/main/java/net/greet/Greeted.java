@@ -3,7 +3,7 @@ package net.greet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Greeted implements PersonGreeter {
+public class Greeted implements PersonGreeted {
 
     Map<String, Integer> personGreetedMap = new HashMap<String, Integer>();
 

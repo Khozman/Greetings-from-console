@@ -19,14 +19,14 @@ public class App {
         while (running) {
             System.out.println("\n____________________________Please Enter a command._________________________________\n");
 
-            controller.process(sc.nextLine().trim());
+            String result = controller.process(sc.nextLine().trim());
 
-            if (("exit").equalsIgnoreCase(controller.command.executeCmd())) {
+            if (("exit").equalsIgnoreCase(result)) {
                 running = false;
                 System.out.println("____________________________Successfully logged out.________________________________");
                 System.out.println("====================================================================================");
             } else {
-                controller.command.executeCmd();
+                System.out.println(result);
             }
         }
     }

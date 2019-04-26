@@ -1,6 +1,6 @@
 package net.greet;
 
-public interface PersonGreeter {
+public interface PersonGreeted {
 //        inter connects the relationship in between the greeted class and the JdbcGreeted..
         void setCounter(String name);
         int totalPeopleGreeted(String name);

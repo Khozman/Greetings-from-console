@@ -3,7 +3,7 @@ package net.greet;
 public class Help {
     public void helpMenu(){
 //        This is the help manual which will be displayed once the user types in Help.
-        System.out.println("                          ☶ Welcome to the Help page:\n\n" +
+        System.out.println ("                          ☶ Welcome to the Help page:\n\n" +
                 "☉ Greet    - command: This command greets the user in different languages." +
                 "\n             Syntax: Greet <name> <language>, " +
                 "\n             Where language = french, chinese or english.\n" +
@@ -17,6 +17,5 @@ public class Help {
                 "           greeted.\n" +
                 "☉ Exit     - command: This command  exits the application.\n" +
                 "☉ Help     - command: This command takes you to this current page.");
-        System.out.println("====================================================================================");
     }
 }

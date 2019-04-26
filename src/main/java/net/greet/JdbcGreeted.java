@@ -2,7 +2,7 @@ package net.greet;
 
 import java.sql.*;
 
-public class JdbcGreeted implements PersonGreeter {
+public class JdbcGreeted implements PersonGreeted {
 
     final String INSERT_PERSON_SQL = "insert into GREETINGS_COUNTER (USERNAME, GREET_COUNT) values(?, ?)";
     final String FIND_PERSON_SQL = "select GREET_COUNT from GREETINGS_COUNTER where USERNAME = ?";
