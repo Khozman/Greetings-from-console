@@ -62,7 +62,7 @@ public class Controller {
                             "\n====================================================================================");
                 }
             } else {
-                return ("Already empty." +
+                return ("\033[31mAlready empty.\033[0m" +
                         "\n====================================================================================");
             }
 
@@ -73,18 +73,18 @@ public class Controller {
                     if(greeted.getCounter(command.getName()) != 0) {
                         return (command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " time(s).");
                     } else{
-                        return ("Username " + command.getName() + " hasn't been greeted." +
+                        return ("\033[31mUsername " + command.getName() + " hasn't been greeted.\033[0m" +
                                 "\n====================================================================================");
                     }
                 } else {
-                    return ("Username " + command.getName() + " hasn't been greeted." +
+                    return ("\033[31mUsername " + command.getName() + " hasn't been greeted.\033[0m" +
                             "\n====================================================================================");
                 }
             } else {
                 if (greeted.totalPeopleGreeted() == 1){
                     greeted.viewData();
                 } else if (greeted.totalPeopleGreeted() == 0){
-                    System.out.println("No one has been greeted.");
+                    System.out.println("\033[31mNo one has been greeted.\033[0m");
                 } else {
                     greeted.viewData();
                 }

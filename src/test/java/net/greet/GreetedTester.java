@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JdbcGreetedTester {
+public class GreetedTester {
     @Test
-    void shouldClearAllUsersFromDb(){
+    void shouldClearAllUsersFromMap(){
         JdbcGreeted db = new JdbcGreeted();
 
         db.setCounter("Thakzin");
@@ -21,7 +21,7 @@ public class JdbcGreetedTester {
     }
 
     @BeforeEach
-    void shouldClearDb(){
+    void shouldClearMap(){
         JdbcGreeted db = new JdbcGreeted();
         db.clearUsers();
     }
@@ -78,7 +78,7 @@ public class JdbcGreetedTester {
     }
 
     @Test
-    void shouldClearSpecificUserFromDb(){
+    void shouldClearSpecificUserFromMap(){
         JdbcGreeted db = new JdbcGreeted();
 
         db.setCounter("Thakzin");
