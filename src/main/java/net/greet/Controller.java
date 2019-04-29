@@ -1,16 +1,17 @@
 package net.greet;
 
 public class Controller {
-    Greeter greeter = new Greeter();
+    private final PersonGreeted greeted;
+    private final Greeter greeter;
     Help help = new Help();
-//    Greeted greeted = new Greeted();
-    PersonGreeted greeted = new JdbcGreeted();
 
-    Command command;
+    Controller(PersonGreeted greeted, Greeter greeter) {
+        this.greeted = greeted;
+        this.greeter = greeter;
+    }
 
     public String process(String userInput) {
-        this.command = new Command(userInput);
-
+        Command command = new Command(userInput);
 
         if (("greet").equalsIgnoreCase(command.executeCmd())) {
 //            Takes the greet command along side the name and language in order to pass it in to the greeter class..
