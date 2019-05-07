@@ -16,7 +16,7 @@ public class Controller {
         if (("greet").equalsIgnoreCase(commandExtractor.executeCmd())) {
 //            Takes the greet commandExtractor along side the name and language in order to pass it in to the greeter class..
             if (commandExtractor.getName() == null) {
-                return "\033[31mERROR:\nYou've entered an INVALID commandExtractor. " +
+                return "\033[31mERROR:\nYou've entered an INVALID command. " +
                         "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n\033[0m" +
                         "\n====================================================================================";
             } else {
@@ -26,7 +26,7 @@ public class Controller {
         } else if (("help").equalsIgnoreCase(commandExtractor.executeCmd())) {
 //            Takes the help commandExtractor and switches the user in the App to the help menu..
             if (commandExtractor.getName() != null){
-                return "\033[31mError:\nYou've entered an INVALID commandExtractor. " +
+                return "\033[31mError:\nYou've entered an INVALID command. " +
                         "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
@@ -35,7 +35,7 @@ public class Controller {
         } else if (("counter").equalsIgnoreCase(commandExtractor.executeCmd())){
 //            It's function goes to the map or the DB, to check on how many people have been greeted in total..
             if (commandExtractor.getName() != null) {
-                return "\033[31mError:\nYou've entered an INVALID commandExtractor. " +
+                return "\033[31mError:\nYou've entered an INVALID command. " +
                         "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
@@ -94,8 +94,8 @@ public class Controller {
           return commandExtractor.executeCmd();
         } else {
 //            This is the default message that one gets when they enter an invalid commandExtractor..
-            return ("\033[31mError:\nYou've entered an INVALID commandExtractor. " +
-                    "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
+            return ("\033[31mError:\nYou've entered an INVALID command. " +
+                    "\nPlease try using the Help command for Assistance.\033[0m" +
                     "\n====================================================================================");
         }
         return "====================================================================================";
