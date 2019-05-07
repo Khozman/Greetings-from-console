@@ -11,49 +11,49 @@ public class Controller {
     }
 
     public String process(String userInput) {
-        Command command = new Command(userInput);
+        CommandExtractor commandExtractor = new CommandExtractor(userInput);
 
-        if (("greet").equalsIgnoreCase(command.executeCmd())) {
-//            Takes the greet command along side the name and language in order to pass it in to the greeter class..
-            if (command.getName() == null) {
-                return "\033[31mERROR:\nYou've entered an INVALID command. " +
+        if (("greet").equalsIgnoreCase(commandExtractor.executeCmd())) {
+//            Takes the greet commandExtractor along side the name and language in order to pass it in to the greeter class..
+            if (commandExtractor.getName() == null) {
+                return "\033[31mERROR:\nYou've entered an INVALID commandExtractor. " +
                         "\nPlease try: Greet <name> <language>, Where language = french, chinese or english.\n\033[0m" +
                         "\n====================================================================================";
             } else {
-                greeter.greetPerson(command.getName(), command.getLanguage());
-                greeted.setCounter(command.getName());
+                greeter.greetPerson(commandExtractor.getName(), commandExtractor.getLanguage());
+                greeted.setCounter(commandExtractor.getName());
             }
-        } else if (("help").equalsIgnoreCase(command.executeCmd())) {
-//            Takes the help command and switches the user in the App to the help menu..
-            if (command.getName() != null){
-                return "\033[31mError:\nYou've entered an INVALID command. " +
-                        "\nPlease try using the Help command for Assistance.\033[0m" +
+        } else if (("help").equalsIgnoreCase(commandExtractor.executeCmd())) {
+//            Takes the help commandExtractor and switches the user in the App to the help menu..
+            if (commandExtractor.getName() != null){
+                return "\033[31mError:\nYou've entered an INVALID commandExtractor. " +
+                        "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
                 help.helpMenu();
             }
-        } else if (("counter").equalsIgnoreCase(command.executeCmd())){
+        } else if (("counter").equalsIgnoreCase(commandExtractor.executeCmd())){
 //            It's function goes to the map or the DB, to check on how many people have been greeted in total..
-            if (command.getName() != null) {
-                return "\033[31mError:\nYou've entered an INVALID command. " +
-                        "\nPlease try using the Help command for Assistance.\033[0m" +
+            if (commandExtractor.getName() != null) {
+                return "\033[31mError:\nYou've entered an INVALID commandExtractor. " +
+                        "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
                 return (greeted.getSize() + " User's have been greeted." +
                         "\n====================================================================================");
             }
-        } else if (("clear").equalsIgnoreCase(command.executeCmd())) {
+        } else if (("clear").equalsIgnoreCase(commandExtractor.executeCmd())) {
 //            It's function goes to the map or the DB too erase all the users who have been greeted..
             if (greeted.totalPeopleGreeted() >= 1) {
                 try {
-                    if (!command.getName().equals(null)) {
-                        if (greeted.checkName(command.getName())) {
-                            greeted.clearCount(command.getName());
-//                            System.out.println(greeted.clearCount(command.getName()));
-                            return (command.getName() + " has been cleared!" +
+                    if (!commandExtractor.getName().equals(null)) {
+                        if (greeted.checkName(commandExtractor.getName())) {
+                            greeted.clearCount(commandExtractor.getName());
+//                            System.out.println(greeted.clearCount(commandExtractor.getName()));
+                            return (commandExtractor.getName() + " has been cleared!" +
                                     "\n====================================================================================");
                         } else {
-                            return ("Username " + command.getName() + " doesn't exist." +
+                            return ("Username " + commandExtractor.getName() + " doesn't exist." +
                                     "\n====================================================================================");
                         }
                     }
@@ -67,18 +67,18 @@ public class Controller {
                         "\n====================================================================================");
             }
 
-        } else if (("greeted").equalsIgnoreCase(command.executeCmd())) {
+        } else if (("greeted").equalsIgnoreCase(commandExtractor.executeCmd())) {
 //            It's function goes to the DB or the map to check how many time was each user greeted..
-            if (command.getName() != null) {
-                if (greeted.checkName(command.getName())) {
-                    if(greeted.getCounter(command.getName()) != 0) {
-                        return (command.getName() + " has been greeted " + greeted.getCounter(command.getName()) + " time(s).");
+            if (commandExtractor.getName() != null) {
+                if (greeted.checkName(commandExtractor.getName())) {
+                    if(greeted.getCounter(commandExtractor.getName()) != 0) {
+                        return (commandExtractor.getName() + " has been greeted " + greeted.getCounter(commandExtractor.getName()) + " time(s).");
                     } else{
-                        return ("\033[31mUsername " + command.getName() + " hasn't been greeted.\033[0m" +
+                        return ("\033[31mUsername " + commandExtractor.getName() + " hasn't been greeted.\033[0m" +
                                 "\n====================================================================================");
                     }
                 } else {
-                    return ("\033[31mUsername " + command.getName() + " hasn't been greeted.\033[0m" +
+                    return ("\033[31mUsername " + commandExtractor.getName() + " hasn't been greeted.\033[0m" +
                             "\n====================================================================================");
                 }
             } else {
@@ -90,12 +90,12 @@ public class Controller {
                     greeted.viewData();
                 }
             }
-        } else if (("exit").equalsIgnoreCase(command.executeCmd())) {
-          return command.executeCmd();
+        } else if (("exit").equalsIgnoreCase(commandExtractor.executeCmd())) {
+          return commandExtractor.executeCmd();
         } else {
-//            This is the default message that one gets when they enter an invalid command..
-            return ("\033[31mError:\nYou've entered an INVALID command. " +
-                    "\nPlease try using the Help command for Assistance.\033[0m" +
+//            This is the default message that one gets when they enter an invalid commandExtractor..
+            return ("\033[31mError:\nYou've entered an INVALID commandExtractor. " +
+                    "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                     "\n====================================================================================");
         }
         return "====================================================================================";

@@ -1,11 +1,11 @@
 package net.greet;
 
-public class Command {
+public class CommandExtractor {
 
     private String[] array;
 
 
-    public  Command(String arg) {
+    public CommandExtractor(String arg) {
 
         this.array = arg.split(" ");
     }
