@@ -79,7 +79,7 @@ public class JdbcGreeted implements PersonGreeted {
         return 0;
     }
 
-    public int getSize(){
+    public int getTotalNumberOfPeople(){
         //     This function gets the size of the map..
         try {
             ResultSet rs = countPeoplePreparedStatement.executeQuery();

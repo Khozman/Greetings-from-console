@@ -34,7 +34,7 @@ public class JdbcGreetedTester {
         db.setCounter("Bheki");
         db.setCounter("Roger");
 
-        assertEquals(2, db.getSize());
+        assertEquals(2, db.getTotalNumberOfPeople());
     }
 
     @Test

@@ -39,7 +39,7 @@ public class Controller {
                         "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
-                return (greeted.getSize() + " User's have been greeted." +
+                return (greeted.getTotalNumberOfPeople() + " User's have been greeted." +
                         "\n====================================================================================");
             }
         } else if (("clear").equalsIgnoreCase(commandExtractor.executeCmd())) {

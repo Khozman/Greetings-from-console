@@ -4,7 +4,7 @@ public interface PersonGreeted {
 //        inter connects the relationship in between the greeted class and the JdbcGreeted..
         void setCounter(String name);
         int totalPeopleGreeted(String name);
-        int getSize();
+        int getTotalNumberOfPeople();
         boolean checkName(String name);
         String clearUsers();
         int getCounter(String name);

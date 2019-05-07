@@ -54,7 +54,7 @@ public class Greeted implements PersonGreeted {
             return personGreetedMap.get(name);
     }
 
-    public int getSize(){
+    public int getTotalNumberOfPeople(){
 //        This function gets the size of the map..
         return personGreetedMap.size();
     }

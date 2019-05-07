@@ -4,92 +4,93 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GreetedTester {
     @Test
     void shouldClearAllUsersFromMap(){
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Thakzin");
-        db.setCounter("Vusi");
-        db.setCounter("Thabang");
-        db.setCounter("Thembi");
-        db.setCounter("Bekz");
-        db.clearUsers();
+        map.setCounter("Thakzin");
+        map.setCounter("Vusi");
+        map.setCounter("Thabang");
+        map.setCounter("Thembi");
+        map.setCounter("Bekz");
+        map.clearUsers();
 
-        assertEquals(0, db.totalPeopleGreeted());
+        assertEquals(0, map.totalPeopleGreeted());
     }
 
     @BeforeEach
     void shouldClearMap(){
-        JdbcGreeted db = new JdbcGreeted();
-        db.clearUsers();
+        Greeted map = new Greeted();
+        map.clearUsers();
     }
 
     @Test
     void shouldGetCountForUsers(){
 
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Bheki");
-        db.setCounter("Roger");
+        map.setCounter("Bheki");
+        map.setCounter("Roger");
 
-        assertEquals(2, db.getSize());
+        assertEquals(2, map.getTotalNumberOfPeople());
     }
 
     @Test
     void shouldCountTheNumberOfPeople(){
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Thakzin");
-        db.setCounter("Vusi");
-        db.setCounter("Thabang");
-        db.setCounter("Thembi");
-        db.setCounter("Bekz");
+        map.setCounter("Thakzin");
+        map.setCounter("Vusi");
+        map.setCounter("Thabang");
+        map.setCounter("Thembi");
+        map.setCounter("Bekz");
 
-        assertEquals(5, db.totalPeopleGreeted());
+        assertEquals(5, map.totalPeopleGreeted());
     }
 
     @Test
     void shouldCheckTheNumberOfTimesAUserIsGreeted(){
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Thabang");
-        db.setCounter("Vusi");
-        db.setCounter("Vusi");
-        db.setCounter("Thabang");
-        db.setCounter("Vusi");
-        db.setCounter("Vusi");
+        map.setCounter("Thabang");
+        map.setCounter("Vusi");
+        map.setCounter("Vusi");
+        map.setCounter("Thabang");
+        map.setCounter("Vusi");
+        map.setCounter("Vusi");
 
-        assertEquals(2, db.getCounter("Thabang"));
-        assertEquals(4, db.getCounter("Vusi"));
+        assertEquals(2, map.getCounter("Thabang"));
+        assertEquals(4, map.getCounter("Vusi"));
     }
 
     @Test
     void shouldCheckWhetherNameExits(){
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Bheki");
-        db.setCounter("Amos");
+        map.setCounter("Bheki");
+        map.setCounter("Amos");
 
-        assertEquals(true,db.checkName("Bheki"));
-        assertEquals(true,db.checkName("Amos"));
-        assertEquals(false,db.checkName("Vutlhari"));
+        assertTrue(map.checkName("Bheki"));
+        assertTrue(map.checkName("Amos"));
+        assertEquals(false, map.checkName("Vutlhari"));
     }
 
     @Test
     void shouldClearSpecificUserFromMap(){
-        JdbcGreeted db = new JdbcGreeted();
+        Greeted map = new Greeted();
 
-        db.setCounter("Thakzin");
-        db.setCounter("Vusi");
-        db.setCounter("Thabang");
-        db.setCounter("Thembi");
-        db.setCounter("Bekz");
-        db.clearCount("Thakzin");
-        db.clearCount("Bekz");
+        map.setCounter("Thakzin");
+        map.setCounter("Vusi");
+        map.setCounter("Thabang");
+        map.setCounter("Thembi");
+        map.setCounter("Bekz");
+        map.clearCount("Thakzin");
+        map.clearCount("Bekz");
 
-        assertEquals(3, db.totalPeopleGreeted());
+        assertEquals(3, map.totalPeopleGreeted());
 
     }
 }
