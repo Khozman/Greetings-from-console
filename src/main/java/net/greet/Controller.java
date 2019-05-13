@@ -3,7 +3,6 @@ package net.greet;
 public class Controller {
     private final PersonGreeted greeted;
     private final Greeter greeter;
-    Help help = new Help();
 
     Controller(PersonGreeted greeted, Greeter greeter) {
         this.greeted = greeted;
@@ -30,7 +29,7 @@ public class Controller {
                         "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
                         "\n====================================================================================";
             } else {
-                help.helpMenu();
+                return Help.helpMenu();
             }
         } else if (("counter").equalsIgnoreCase(commandExtractor.executeCmd())){
 //            It's function goes to the map or the DB, to check on how many people have been greeted in total..
