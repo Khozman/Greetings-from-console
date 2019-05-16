@@ -23,7 +23,7 @@ public class App {
             System.out.println("\n____________________________Please Enter a command._________________________________\n");
             String result = controller.process(sc.nextLine().trim());
 
-            if (("exit").equalsIgnoreCase(result)) {
+            if (result.equals("exit")) {
                 running = false;
                 System.out.println("____________________________Successfully logged out.________________________________");
                 System.out.println("====================================================================================");

@@ -90,7 +90,13 @@ public class Controller {
                 }
             }
         } else if (("exit").equalsIgnoreCase(commandExtractor.executeCmd())) {
-          return commandExtractor.executeCmd();
+            if (commandExtractor.getName() != null){
+                return "\033[31mError:\nYou've entered an INVALID command. " +
+                        "\nPlease try using the Help commandExtractor for Assistance.\033[0m" +
+                        "\n====================================================================================";
+            } else {
+                return commandExtractor.executeCmd();
+            }
         } else {
 //            This is the default message that one gets when they enter an invalid commandExtractor..
             return ("\033[31mError:\nYou've entered an INVALID command. " +
