@@ -4,7 +4,7 @@ public class Controller {
     private final PersonGreeted greeted;
     private final Greeter greeter;
 
-    Controller(PersonGreeted greeted, Greeter greeter) {
+    public Controller(PersonGreeted greeted, Greeter greeter) {
         this.greeted = greeted;
         this.greeter = greeter;
     }
