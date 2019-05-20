@@ -14,7 +14,7 @@ public class App {
                 "\uD835\uDD5A\uD835\uDD5F\uD835\uDD58\uD835\uDD64 \uD835\uDD38\uD835\uDD61\uD835\uDD61.*****************" +
                 "************");
 
-        PersonGreeted greeted = new JdbcGreeted();
+        PersonGreeted greeted = new Greeted();
         Greeter greeter = new Greeter();
 
         Controller controller = new Controller(greeted, greeter);
