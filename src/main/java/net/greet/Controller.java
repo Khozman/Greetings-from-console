@@ -85,8 +85,10 @@ public class Controller {
             } else {
                 return commandExtractor.executeCmd();
             }
+        } else {
+            return ("\033[31mError:\nYou've entered an INVALID command. " +
+                    "\nPlease try using the Help command for Assistance.\033[0m\n");
         }
-       return ("\033[31mError:\nYou've entered an INVALID command. " +
-               "\nPlease try using the Help command for Assistance.\033[0m\n");
+        return "";
     }
 }

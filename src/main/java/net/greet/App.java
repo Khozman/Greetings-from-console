@@ -14,7 +14,7 @@ public class App {
                 "\uD835\uDD5A\uD835\uDD5F\uD835\uDD58\uD835\uDD64 \uD835\uDD38\uD835\uDD61\uD835\uDD61.*****************" +
                 "************");
 
-        PersonGreeted greeted = new Greeted();
+        PersonGreeted greeted = new JdbcGreeted();
         Greeter greeter = new Greeter();
 
         Controller controller = new Controller(greeted, greeter);
@@ -23,7 +23,7 @@ public class App {
             System.out.println("\n____________________________Please Enter a command._________________________________\n");
             String result = controller.process(sc.nextLine().trim());
 
-            if (result.equals("exit")) {
+            if (result.equalsIgnoreCase("exit")) {
                 running = false;
                 System.out.println("____________________________Successfully logged out.________________________________");
                 System.out.println("====================================================================================");
